@@ -96,6 +96,7 @@ export default class DonutChart extends React.Component {
         this.drawKey(canvas);
     }
 
+    //Draw and update pie chart slices
     drawSlices = (s) => {
         const {height, width, canvas, data} = this.state;
         const radius = Math.min(height, width) / 2;
