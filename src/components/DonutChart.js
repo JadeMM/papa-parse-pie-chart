@@ -103,7 +103,7 @@ export default class DonutChart extends React.Component {
         const color = d3.scaleOrdinal().range(["#A7226E", "#EC2049","#F26B38", "#cc3300", "#F7DB4F", "#2F9599"]);
         
         const arc = d3.arc()
-            .innerRadius(radius * 0.3)
+            .innerRadius(radius * 0.5)
             .outerRadius(radius);
 
         const pie = d3.pie()
@@ -141,16 +141,15 @@ export default class DonutChart extends React.Component {
         const color = d3.scaleOrdinal().range(["#A7226E", "#EC2049","#F26B38", "#cc3300", "#F7DB4F", "#2F9599"]);
         const keys = [1,2,3,4,5,6];
 
-        const squares = canvas.selectAll("rect")
+        const squares = canvas.selectAll("circle")
             .data(keys); 
 
         //Color square
         squares.enter()
-                .append('rect')
-                .attr("width", 10)
-				.attr("height", 10)
-                .attr('x', -width/2)
-                .attr('y', d => (-height/2) + d * 20)
+                .append('circle')
+                .attr("r", 6)
+                .attr('cx', -35)
+                .attr('cy', d => d*20 - 70)
                 .style('fill', (d,i) => color(i))
         
         //Text
@@ -159,8 +158,8 @@ export default class DonutChart extends React.Component {
             .enter()
                 .append("text")
                 .text(d => `District ${d}`)
-                .attr("x", -width/2 + 15)
-                .attr("y", (d, i) => (-height/2) + (d * 20) + 10)
+                .attr("x", -20)
+                .attr("y", (d, i) => (d * 20) -64)
     }
 
     render() {
